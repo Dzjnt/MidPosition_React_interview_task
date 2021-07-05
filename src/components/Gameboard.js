@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getRandomColor } from "../Colors";
 import uuid from "react-uuid";
-import "./Gameboard.css";
+import styles from "./Gameboard.css";
 import Tile from "./Tile";
 import {
   checkSurroundingTiles,
@@ -29,16 +29,16 @@ const Gameboard = () => {
   const dispatch = useDispatch();
   const gameboard = useSelector(boardSelector);
 
-  useEffect(() => {
-    dispatch(createBoard());
+  // useEffect(() => {
+  //   dispatch(createBoard());
 
-    console.log(gameboard);
+  //   console.log(gameboard);
 
-    if (gameboard.length) {
-      console.log(gameboard);
-      setBoard([...gameboard]);
-    }
-  }, [gameboard.length]);
+  //   if (gameboard.length) {
+  //     console.log(gameboard);
+  //     setBoard([...gameboard]);
+  //   }
+  // }, [gameboard.length]);
 
   // useEffect(() => {
   //   setBoard(createBoardGame());
@@ -135,7 +135,7 @@ const Gameboard = () => {
 
   return (
     <>
-      <div>Punkty: {points}</div>
+      <div data-testid="points">Punkty: {points}</div>
       <div id="gameboard" onMouseDown={(e) => handleGameboardClick(e)}>
         {board.map((row) => (
           <Tile

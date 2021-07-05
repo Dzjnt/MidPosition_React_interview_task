@@ -1,11 +1,13 @@
-import logo from "./logo.svg";
-import "./App.css";
-import Gameboard from "./components/Gameboard";
+// import "./App.css";
+// import Gameboard from "./components/Gameboard";
+
+import React from "react";
 
 function App() {
   return (
     <div id="app">
-      <Gameboard />
+      {/* <Gameboard /> */}
+      <div>elo</div>
     </div>
   );
 }
