@@ -10,7 +10,42 @@ const fakeStore = {
   gameboard: [
     {
       id: faker.datatype.uuid(),
-      style: getRandomColor(),
+      style: "red",
+      visited: false,
+    },
+    {
+      id: faker.datatype.uuid(),
+      style: "red",
+      visited: false,
+    },
+    {
+      id: faker.datatype.uuid(),
+      style: "red",
+      visited: false,
+    },
+    {
+      id: faker.datatype.uuid(),
+      style: "blue",
+      visited: false,
+    },
+    {
+      id: faker.datatype.uuid(),
+      style: "green",
+      visited: false,
+    },
+    {
+      id: faker.datatype.uuid(),
+      style: "blue",
+      visited: false,
+    },
+    {
+      id: faker.datatype.uuid(),
+      style: "yellow",
+      visited: false,
+    },
+    {
+      id: faker.datatype.uuid(),
+      style: "blue",
       visited: false,
     },
   ],

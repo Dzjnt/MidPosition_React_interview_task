@@ -46,17 +46,19 @@ export const getCords = (e) => {
   return [tileMapX, tileMapY];
 };
 
-export const createBoardGame = () => {
-  const newBoard = [];
+export const createBoardGame = (size) => {
+  const newBoard = []; 
 
-  for (let j = 0; j < 5 * 5; j++) {
-    let id = uuid();
-    newBoard[j] = {
-      key: id,
-      id: id,
-      style: getRandomColor(),
-      visited: false,
-    };
+  if (!isNaN(size)) {
+    for (let j = 0; j < size * size; j++) {
+      let id = uuid();
+      newBoard[j] = {
+        key: id,
+        id: id,
+        style: getRandomColor(),
+        visited: false,
+      };
+    }
   }
 
   return newBoard;

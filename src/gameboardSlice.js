@@ -10,16 +10,19 @@ const gameboardSlice = createSlice({
   name: "gameboard",
   initialState,
   reducers: {
-    createBoard: (state, action) => {
-      //const { size } = action.payload;
-      const newBoard = createBoardGame();
+    createBoard: (state, { payload }) => {
+      const {
+        payload: { size },
+      } = payload;
+
+      const newBoard = createBoardGame(size);
       state.gameboard = newBoard;
     },
     addTiles: (state, action) => {
       const { count } = action.payload;
 
       const newTiles = createTiles(count);
-      //const newBoard = newTiles.concat(state.gameboard);
+
 
       state.gameboard = [...newTiles, ...state.gameboard];
     },
