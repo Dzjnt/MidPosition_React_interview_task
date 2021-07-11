@@ -1,6 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { getRandomColor } from "../Colors";
-import gameboardReducer from "../gameboardReducer";
+import gameboardSlice from "../gameboardSlice";
 import { render as rtlRender, fireEvent } from "@testing-library/react";
 import { Provider } from "react-redux";
 import faker from "faker";
@@ -57,7 +56,7 @@ function render(
   {
     initialState,
     store = configureStore({
-      reducer: gameboardReducer,
+      reducer: gameboardSlice.reducer,
       preloadedState: initialState,
     }),
     ...renderOptions

@@ -1,5 +1,30 @@
-import { getRandomColor } from "../Colors";
+//import { getRandomColor } from "../Colors";
 import uuid from "react-uuid";
+
+export const getRandomColor = () => {
+  let tempArr = [];
+  let len;
+  let rand;
+  let randColorName;
+
+  const colours = {
+    aqua: "#00ffff",
+    black: "#000000",
+    blue: "#0000ff",
+    blueviolet: "#8a2be2",
+    orange: "#ffa500",
+    red: "#ff0000",
+    yellowgreen: "#9acd32",
+  };
+
+  for (var key in colours) if (colours.hasOwnProperty(key)) tempArr.push(key);
+
+  len = tempArr.length;
+  rand = Math.floor(Math.random() * len);
+  randColorName = tempArr[rand];
+
+  return randColorName;
+};
 
 export const checkSurroundingTiles = (
   board,
@@ -47,7 +72,7 @@ export const getCords = (e) => {
 };
 
 export const createBoardGame = (size) => {
-  const newBoard = []; 
+  const newBoard = [];
 
   if (!isNaN(size)) {
     for (let j = 0; j < size * size; j++) {

@@ -22,49 +22,18 @@ import _ from "lodash";
 const Gameboard = () => {
   const [board, setBoard] = useState([]);
   let [points, setPoints] = useState(0);
-  let row = 5;
-  let cell = 5;
   let visited = [];
 
   const dispatch = useDispatch();
   const gameboard = useSelector(boardSelector);
 
-  // useEffect(() => {
-  //   dispatch(createBoard());
+  useEffect(() => {
+    dispatch(createBoard());
 
-  //   console.log(gameboard);
-
-  //   if (gameboard.length) {
-  //     console.log(gameboard);
-  //     setBoard([...gameboard]);
-  //   }
-  // }, [gameboard.length]);
-
-  // useEffect(() => {
-  //   setBoard(createBoardGame());
-  // }, []);
-  const addNewTilesAtStart = (visited) => {
-    let newSquares = [];
-    let copy = board;
-
-    copy = copy.filter(
-      (tile) => !visited.find((visitedTile) => tile.key === visitedTile.key)
-    );
-
-    for (let i = 0; i < visited.length; i++) {
-      let id = uuid();
-      newSquares[i] = {
-        key: id,
-        id: id,
-        style: getRandomColor(),
-        visited: false,
-      };
+    if (gameboard.length) {
+      setBoard([...gameboard]);
     }
-    console.log(copy);
-    const newArr = newSquares.concat(copy);
-
-    return newArr;
-  };
+  }, [gameboard.length]);
 
   const clearVisisted = (squares) => {
     for (let i = 0; i < squares.length; i++) {
@@ -75,8 +44,6 @@ const Gameboard = () => {
 
   const handleGameboardClick = (e) => {
     let [tileMapX, tileMapY] = getCords(e);
-    console.log(tileMapX);
-    console.log(tileMapY);
     let outcome = board[tileMapY * 5 + tileMapX];
 
     if (checkSurroundingTiles(board, tileMapX, tileMapY, outcome.style)) {
@@ -109,8 +76,7 @@ const Gameboard = () => {
       if (newJ < 0 || newJ >= 5) continue;
 
       let nextSquare = { ...squares[getIndex(newI, newJ)] };
-      console.log(Object.isFrozen(nextSquare));
-      console.log(Object.isFrozen(squares));
+
       if (nextSquare.style !== colorToLookFor) continue;
       if (nextSquare.visited) continue;
 
