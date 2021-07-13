@@ -19,7 +19,7 @@ import {
 } from "../gameboardSlice";
 import _ from "lodash";
 
-const Gameboard = () => {
+const Gameboard = ({size}) => {
   const [board, setBoard] = useState([]);
   let [points, setPoints] = useState(0);
   let visited = [];
@@ -28,7 +28,7 @@ const Gameboard = () => {
   const gameboard = useSelector(boardSelector);
 
   useEffect(() => {
-    dispatch(createBoard());
+    dispatch(createBoard(size));
 
     if (gameboard.length) {
       setBoard([...gameboard]);
